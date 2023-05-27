@@ -121,7 +121,7 @@ class SILab2Test {
             SILab2.function(null, allUsers);
         });
 
-        SILab2.User user = new SILab2.User("testUser", null, "test@example.com");
+        SILab2.User user = new SILab2.User(null, null, "test@example.com");
 
         Assertions.assertThrows(RuntimeException.class, () -> {
             SILab2.function(user, allUsers);
@@ -136,7 +136,7 @@ class SILab2Test {
             SILab2.function(null, allUsers);
         });
 
-        SILab2.User user = new SILab2.User("testUser", "testPassword", null);
+        SILab2.User user = new SILab2.User(null, "testPassword", null);
 
         Assertions.assertThrows(RuntimeException.class, () -> {
             SILab2.function(user, allUsers);
