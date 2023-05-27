@@ -19,7 +19,7 @@ class SILab2Test {
         allUsers = new ArrayList<>();
     }
 
-    //Multiple condition tests
+    //Every branch tests
     @Test
     void testFunctionWithValidUser() {
         boolean result = SILab2.function(user, allUsers);
