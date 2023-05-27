@@ -19,6 +19,7 @@ class SILab2Test {
         allUsers = new ArrayList<>();
     }
 
+    //Multiple condition tests
     @Test
     void testFunctionWithValidUser() {
         boolean result = SILab2.function(user, allUsers);
@@ -99,5 +100,68 @@ class SILab2Test {
         user.setPassword("MiaPassword!123");
         boolean result = SILab2.function(user, allUsers);
         Assertions.assertTrue(result);
+    }
+
+    //Multiple condition tests
+    @Test
+    void testFunctionWithAllNonNullValues() {
+        SILab2.User user = new SILab2.User("testUser", "testPassword", "test@example.com");
+        List<SILab2.User> allUsers = new ArrayList<>();
+
+        Assertions.assertDoesNotThrow(() -> {
+            boolean result = SILab2.function(user, allUsers);
+            Assertions.assertTrue(result);
+        });
+    }
+    @Test
+    void testFunctionWithNullUserAndPassword() {
+        List<SILab2.User> allUsers = new ArrayList<>();
+
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            SILab2.function(null, allUsers);
+        });
+
+        SILab2.User user = new SILab2.User("testUser", null, "test@example.com");
+
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            SILab2.function(user, allUsers);
+        });
+    }
+
+    @Test
+    void testFunctionWithNullUserAndEmail() {
+        List<SILab2.User> allUsers = new ArrayList<>();
+
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            SILab2.function(null, allUsers);
+        });
+
+        SILab2.User user = new SILab2.User("testUser", "testPassword", null);
+
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            SILab2.function(user, allUsers);
+        });
+    }
+
+    @Test
+    void testFunctionWithNullPasswordAndEmail() {
+        List<SILab2.User> allUsers = new ArrayList<>();
+
+        SILab2.User user = new SILab2.User("testUser", null, null);
+
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            SILab2.function(user, allUsers);
+        });
+    }
+
+    @Test
+    void testFunctionWithAllNullValues() {
+        List<SILab2.User> allUsers = new ArrayList<>();
+
+        SILab2.User user = new SILab2.User(null, null, null);
+
+        Assertions.assertThrows(RuntimeException.class, () -> {
+            SILab2.function(user, allUsers);
+        });
     }
 }
