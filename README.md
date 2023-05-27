@@ -2,6 +2,7 @@
 Миа Колева 213186
 
 Control Flow Graph
+https://ibb.co/KN1DKJ9
 
 
 Цикломатска комплексност:
